@@ -1,31 +1,33 @@
 'use client'
 
 import { useSorting } from '@/components/providers/SortingProvider'
-import { algorithms } from '@/lib/algorithms'
+import { ChevronUpDownIcon } from '@heroicons/react/24/outline'
 
 export const ControlPanel = () => {
-  const [
-    { arraySize, speed, isSorting, algorithm },
-    { setArray, setAlgorithm, setSpeed, setArraySize, setIsSorting }
-  ] = useSorting()
+  const { algorithms, arraySize, speed, algorithm } = useSorting()
+  const [, setAlgorithm] = useSorting().algorithm
+  const [, setArraySize] = useSorting().arraySize
+  const [, setSpeed] = useSorting().speed
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-gray-900 rounded-lg">
-      <div className="space-y-2">
-        <label className="text-white">Algorithm</label>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-gray-800 rounded-lg">
+      {/* Algorithm Selection */}
+      <div className="relative">
         <select
           value={algorithm}
           onChange={(e) => setAlgorithm(e.target.value as AlgorithmKey)}
-          className="w-full p-2 rounded bg-gray-800 text-white"
+          className="w-full pl-3 pr-10 py-2 bg-gray-700 rounded-lg text-white appearance-none"
         >
           {Object.entries(algorithms).map(([key, algo]) => (
             <option key={key} value={key}>{algo.name}</option>
           ))}
         </select>
+        <ChevronUpDownIcon className="absolute right-3 top-3 h-5 w-5 text-gray-400" />
       </div>
 
+      {/* Array Size Control */}
       <div className="space-y-2">
-        <label className="text-white">Array Size: {arraySize}</label>
+        <label className="text-white block">Array Size: {arraySize}</label>
         <input
           type="range"
           min="10"
@@ -36,8 +38,9 @@ export const ControlPanel = () => {
         />
       </div>
 
+      {/* Speed Control */}
       <div className="space-y-2">
-        <label className="text-white">Speed</label>
+        <label className="text-white block">Speed</label>
         <input
           type="range"
           min="1"
