@@ -1,8 +1,8 @@
 // app/comparison/page.tsx
 'use client'
 
-import { SortingProvider } from '@/components/providers/SortingProvider'
-import { AlgorithmComparison } from '@/components/core/AlgorithmComparison'
+import { SortingProvider } from '@/components/providers/SortingProvider';
+import { AlgorithmComparison } from '@/components/core/AlgorithmComparison';
 
 export default function ComparisonPage() {
   return (

@@ -1,13 +1,14 @@
 'use client'
 
 import { useSorting } from '@/components/providers/SortingProvider'
+import { AlgorithmKey } from '@/lib/algorithms'
 import { ChevronUpDownIcon } from '@heroicons/react/24/outline'
 
 export const ControlPanel = () => {
-  const { algorithms, arraySize, speed, algorithm } = useSorting()
-  const [, setAlgorithm] = useSorting().algorithm
-  const [, setArraySize] = useSorting().arraySize
-  const [, setSpeed] = useSorting().speed
+  const { algorithms } = useSorting()
+  const [algorithm, setAlgorithm] = useSorting().algorithm
+  const [arraySize, setArraySize] = useSorting().arraySize
+  const [speed, setSpeed] = useSorting().speed
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-gray-800 rounded-lg">

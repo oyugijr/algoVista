@@ -41,7 +41,7 @@ export const SortingProvider = ({ children }: { children: React.ReactNode }) => 
   const [comparisons, setComparisons] = useAtom(comparisonsAtom)
   const [swaps, setSwaps] = useAtom(swapsAtom)
   const [currentStep, setCurrentStep] = useAtom(currentStepAtom)
-  const [pseudocodeLine, setPseudocodeLine] = useAtom(pseudocodeLineAtom)
+  const [pseudocodeLine, setPseudocodeLine] = useState<number>(0);
 
   // Initialize array
   useEffect(() => {

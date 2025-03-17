@@ -4,7 +4,7 @@ import { useSorting } from '@/components/providers/SortingProvider'
 
 export const MetricsDisplay = () => {
   const { algorithms, algorithm, comparisons, swaps } = useSorting()
-  const currentAlgo = algorithms[algorithm]
+  const currentAlgo = algorithms[algorithm[0] as keyof typeof algorithms]
 
   return (
     <div className="grid grid-cols-2 gap-4 p-4 bg-gray-800 rounded-lg">
