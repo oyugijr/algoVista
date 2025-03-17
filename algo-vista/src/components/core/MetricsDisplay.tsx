@@ -3,7 +3,7 @@
 import { useSorting } from '@/components/providers/SortingProvider'
 
 export const MetricsDisplay = () => {
-  const { algorithms: algorithms, algorithm, comparisons, swaps } = useSorting()
+  const { algorithms, algorithm, comparisons, swaps } = useSorting()
   const currentAlgo = algorithms[algorithm]
 
   return (
@@ -22,11 +22,11 @@ export const MetricsDisplay = () => {
       </div>
       <div className="text-center">
         <div className="text-gray-400 text-sm">Comparisons</div>
-        <div className="text-xl font-bold text-white">{comparisons}</div>
+        <div className="text-xl font-bold text-white">{Array.isArray(comparisons) ? comparisons[0] : comparisons}</div>
       </div>
       <div className="text-center">
         <div className="text-gray-400 text-sm">Swaps</div>
-        <div className="text-xl font-bold text-white">{swaps}</div>
+        <div className="text-xl font-bold text-white">{Array.isArray(swaps) ? swaps[0] : swaps}</div>
       </div>
     </div>
   )

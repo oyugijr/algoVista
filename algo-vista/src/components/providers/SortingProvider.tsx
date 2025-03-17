@@ -1,8 +1,9 @@
 'use client'
 
-import { atom, useAtom } from 'jotai'
+import { atom, Provider, useAtom } from 'jotai'
 import { generateArray } from '@/lib/utils'
 import { algorithms, type AlgorithmKey } from '@/lib/algorithms'
+import { useEffect } from 'react'
 
 // State atoms
 const arrayAtom = atom<number[]>([])
@@ -19,6 +20,7 @@ const metricsHistoryAtom = atom<Array<{
   comparisons: number
   swaps: number
 }>>([])
+const startTimeAtom = atom<number>(0)
 
 // export const SortingProvider = ({ children }: { children: React.ReactNode }) => {
 //   const [array, setArray] = useAtom(arrayAtom)
@@ -54,7 +56,7 @@ export const SortingProvider = ({ children }: { children: React.ReactNode }) => 
 }
 
 export const useSorting = () => ({
-  algorithmss,
+  algorithms,
   array: useAtom(arrayAtom),
   algorithm: useAtom(algorithmAtom),
   isSorting: useAtom(isSortingAtom),
@@ -67,18 +69,17 @@ export const useSorting = () => ({
 
 // sorting logic to record metrics
 const updateMetrics = () => {
-  const startTime = Date.now(); // Initialize startTime
-  const [comparisons] = useAtom(comparisonsAtom);
-  // Access comparisons state
-  const [swaps] = useAtom(swapsAtom); // Access swaps state
-  const [, setMetricsHistory] = useAtom(metricsHistoryAtom); // Access metrics history state
-
+  const elapsed = Date.now() - startTime
   setMetricsHistory(prev => [
     ...prev,
     {
-      time: Date.now() - startTime,
-      comparisons,
-      swaps
+      time: elapsed,
+      comparisons: currentComparisons,
+      swaps: currentSwaps
     }
   ])
 }
+
+// Add to startSorting action
+setStartTime(Date.now())
+

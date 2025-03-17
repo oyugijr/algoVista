@@ -21,35 +21,39 @@ export const useSortingActions = () => {
     const algo = algorithms[algorithm]
     sortingRef.current = algo.generator([...array])
     
-    let next = sortingRef.current.next()
-    while (!next.done) {
-      const { value } = next
+    let next = sortingRef.current?.next()
+    while (next && !next.done) {
+      const { value } = next as { value: { compared?: any[]; swapped?: unknown[]; array?: any[]; line?: number } }
       
       // Update visualization state
-      setCurrentStep(value)
-      setPseudocodeLine(value.line ?? 0)
+      currentStep[1](value)
+      pseudocodeLine(value.line ?? 0)
       
       // Update metrics
       if (value.compared?.length) {
-        setComparisons(c => c + 1)
+        comparisons[1](c => c + 1)
         playComparisonSound()
       }
       if (value.swapped?.length) {
-        setSwaps(s => s + 1)
+        swaps[1](s => s + 1)
         playSwapSound()
       }
 
       // Update array if modified
       if (value.array) {
-        setArray(value.array)
+        array[1](value.array)
       }
 
       await new Promise(resolve => 
-        setTimeout(resolve, 110 - speed)
+        setTimeout(resolve, 110 - Number(speed))
       )
-      next = sortingRef.current.next()
+      if (sortingRef.current) {
+        next = sortingRef.current.next()
+      } else {
+        break
+      }
     }
-  }, [algorithm, array, speed, algorithms])
+  }, [algorithms, algorithm, array, currentStep, pseudocodeLine, comparisons, playComparisonSound, swaps, playSwapSound, speed])
 
   const stopSorting = useCallback(() => {
     sortingRef.current = null

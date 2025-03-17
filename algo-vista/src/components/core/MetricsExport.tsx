@@ -1,22 +1,28 @@
-// components/core/MetricsExport.tsx
 'use client'
 
 import { useSorting } from '@/components/providers/SortingProvider'
+import { algorithms } from '@/lib/algorithms'
 
-export const MetricsExport = () => {
-  const [{ arraySize, comparisons, swaps, algorithm }] = useSorting()
+export const useMetricsExport = () => {
+  const { algorithm, arraySize, comparisons, swaps } = useSorting() as unknown as {
+    algorithm: keyof typeof algorithms
+    arraySize: number
+    comparisons: number
+    swaps: number
+  }
 
   const handleExport = () => {
     const data = {
-      algorithm,
-      arraySize,
-      comparisons,
-      swaps,
+      algorithm: algorithm,
+      arraySize: arraySize,
+      comparisons: comparisons,
+      swaps: swaps,
       timestamp: new Date().toISOString(),
-      complexity: algorithms[algorithm].complexity
+      timeComplexity: algorithms[algorithm].complexity.time,
+      spaceComplexity: algorithms[algorithm].complexity.space
     }
-    
-    const blob = new Blob([JSON.stringify(data)], { type: 'application/json' })
+
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
     const url = URL.createObjectURL(blob)
     
     const a = document.createElement('a')
@@ -28,12 +34,5 @@ export const MetricsExport = () => {
     URL.revokeObjectURL(url)
   }
 
-  return (
-    <button 
-      onClick={handleExport}
-      className="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg"
-    >
-      Export Metrics
-    </button>
-  )
+  return { handleExport }
 }
