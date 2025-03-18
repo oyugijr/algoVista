@@ -1,6 +1,6 @@
 import { useCallback, useRef } from 'react'
-import { useSorting } from '@/components/providers/SortingProvider'
-import { useSound } from '@/hooks/useSound'
+import { useSorting } from 'src/components/providers/SortingProvider'
+import { useSound } from '@/components/hooks/useSound'
 
 export const useSortingActions = () => {
   const { 
@@ -23,7 +23,7 @@ export const useSortingActions = () => {
     
     let next = sortingRef.current?.next()
     while (next && !next.done) {
-      const { value } = next as { value: { compared?: any[]; swapped?: unknown[]; array?: any[]; line?: number } }
+      const { value } = next as { value: { compared?: [number, number][]; swapped?: [number, number][]; array?: number[]; line?: number } }
       
       // Update visualization state
       currentStep[1](value)

@@ -1,13 +1,13 @@
 "use client"
 
 import { useState, useEffect, useRef, useCallback } from "react"
-import { Button } from "@/components/ui/button"
-import { Slider } from "@/components/ui/slider"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Card, CardContent } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Button } from "src/components/ui/button"
+import { Slider } from "src/components/ui/slider"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "src/components/ui/select"
+import { Card, CardContent } from "src/components/ui/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "src/components/ui/tabs"
 import { Play, Pause, RotateCcw, ChevronRight } from "lucide-react"
-import AlgorithmInfo from "@/components/algorithm-info"
+import AlgorithmInfo from "src/components/algorithm-info"
 import {
   bubbleSort,
   selectionSort,
@@ -16,7 +16,7 @@ import {
   quickSort,
   heapSort,
   radixSort,
-} from "@/lib/sorting-algorithms"
+} from "src/lib/sorting-algorithms"
 
 const MIN_ARRAY_SIZE = 10
 const MAX_ARRAY_SIZE = 100

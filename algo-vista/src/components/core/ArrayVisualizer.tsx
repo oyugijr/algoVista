@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useSorting } from '@/components/providers/SortingProvider'
+import { useSorting } from 'src/components/providers/SortingProvider'
 
 export const ArrayVisualizer = () => {
   const [{ array, currentStep }] = useSorting()

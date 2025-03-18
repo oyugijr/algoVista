@@ -1,4 +1,4 @@
-import { SortingProvider } from '@/components/providers/SortingProvider'
+import { SortingProvider } from 'src/components/providers/SortingProvider'
 import { 
   ArrayVisualizer,
   ControlPanel,

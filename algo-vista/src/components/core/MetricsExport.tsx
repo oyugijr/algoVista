@@ -1,7 +1,7 @@
 'use client';
 
-import { useSorting } from '@/components/providers/SortingProvider';
-import { algorithms } from '@/lib/algorithms';
+import { useSorting } from 'src/components/providers/SortingProvider';
+import { algorithms } from 'src/lib/algorithms';
 
 export const useMetricsExport = () => {
   const sortingData = useSorting();

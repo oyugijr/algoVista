@@ -1,6 +1,6 @@
 'use client'
 
-import { useSorting } from '@/components/providers/SortingProvider'
+import { useSorting } from 'src/components/providers/SortingProvider'
 
 export const Pseudocode = () => {
   const { algorithms, algorithm, pseudocodeLine } = useSorting()

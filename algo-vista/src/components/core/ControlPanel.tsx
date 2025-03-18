@@ -1,7 +1,7 @@
 'use client'
 
-import { useSorting } from '@/components/providers/SortingProvider'
-import { AlgorithmKey } from '@/lib/algorithms'
+import { useSorting } from 'src/components/providers/SortingProvider'
+import { AlgorithmKey } from 'src/lib/algorithms'
 import { ChevronUpDownIcon } from '@heroicons/react/24/outline'
 
 export const ControlPanel = () => {

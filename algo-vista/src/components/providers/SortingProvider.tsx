@@ -1,8 +1,8 @@
 'use client'
 
 import { atom, Provider, useAtom } from 'jotai'
-import { generateArray } from '@/lib/utils'
-import { algorithms, type AlgorithmKey } from '@/lib/algorithms'
+import { generateArray } from 'src/lib/utils'
+import { algorithms, type AlgorithmKey } from 'src/lib/algorithms'
 import { useEffect } from 'react'
 
 // State atoms
@@ -69,6 +69,8 @@ export const useSorting = () => ({
 
 // sorting logic to record metrics
 const updateMetrics = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [startTime] = useAtom(startTimeAtom)
   const elapsed = Date.now() - startTime
   setMetricsHistory(prev => [
     ...prev,

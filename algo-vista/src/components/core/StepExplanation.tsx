@@ -1,8 +1,8 @@
 // components/core/StepExplanation.tsx
 'use client'
 
-import { useSorting } from '@/components/providers/SortingProvider';
-import type { AlgorithmKey } from '@/lib/algorithms';
+import { useSorting } from 'src/components/providers/SortingProvider';
+import type { AlgorithmKey } from 'src/lib/algorithms';
 
 type Explanations = {
   [key in AlgorithmKey]: {

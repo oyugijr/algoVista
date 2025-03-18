@@ -2,7 +2,7 @@
 'use client'
 
 import { useAtom } from 'jotai'
-import { sortingAtoms } from '@/components/providers/SortingProvider'
+import { sortingAtoms } from 'src/components/providers/SortingProvider'
 import { ArrayVisualizer } from './ArrayVisualizer'
 
 export const AlgorithmComparison = () => {

@@ -1,7 +1,7 @@
 'use client'
 
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend } from 'recharts'
-import { useSorting } from '@/components/providers/SortingProvider'
+import { useSorting } from 'src/components/providers/SortingProvider'
 
 export const PerformanceGraph = () => {
   const { metricsHistory } = useSorting()
